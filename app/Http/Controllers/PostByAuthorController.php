@@ -6,13 +6,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 
-class HomeController
+class PostByAuthorController
 {
-    public function __invoke()
+    public function __invoke($id)
     {
-        $posts = Post::paginate(15);
-
+        $posts = Post::where('user_id',$id)->paginate(15);
         return view('pages.posts', compact('posts'));
     }
 
+
 }
+
+
